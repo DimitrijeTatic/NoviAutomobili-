@@ -1,0 +1,60 @@
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3">
+        Registracija
+      </h1>
+      <%- include ./partials/messages %>
+      <form action="/users/register" method="POST">
+        <div class="form-group">
+          <label for="ime">Ime</label>
+          <input
+            type="ime"
+            id="ime"
+            name="ime"
+            class="form-control"
+            placeholder="Unesite ime"
+            value="<%= typeof ime != 'undefined' ? ime : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            placeholder="Unesite Email"
+            value="<%= typeof email != 'undefined' ? email : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Lozinka</label>
+          <input
+            type="password"
+            id="lozinka"
+            name="lozinka"
+            class="form-control"
+            placeholder="Unesite lozinku"
+            value="<%= typeof lozinka != 'undefined' ? lozinka : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password2">Potvrdite lozinku</label>
+          <input
+            type="password"
+            id="lozinka2"
+            name="lozinka2"
+            class="form-control"
+            placeholder="Potvrdite lozinku"
+            value="<%= typeof lozinka2 != 'undefined' ? lozinka2 : '' %>"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">
+          Registruj se
+        </button>
+      </form>
+      <p class="lead mt-4">Imate nalog? <a href="/users/login">Ulogujte se</a></p>
+    </div>
+  </div>
+</div>

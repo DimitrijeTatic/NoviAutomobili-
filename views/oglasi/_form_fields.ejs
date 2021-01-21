@@ -1,0 +1,170 @@
+<div class="form-group">
+    <label for="Naslov"> Naslov </label>
+    <input type="text" name="naslov" id="Naslov" class="form-control" required placeholder="Unesite naslov svog oglasa" value="<% if(locals.oglas){ %> <%= oglas.naslov %> <% } %>">
+</div>
+
+<div class="form-group">
+    <label for="Model"> Model </label>
+    <input type="text" name="model" id="model" class="form-control" required placeholder="Unesite model automobila" value="<% if(locals.oglas){ %> <%= oglas.model %> <% } %>">
+</div>
+
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroupFileAddon01">Cena</span>
+    </div>
+    <div class="custom-file">
+        <input type="text" name="cena" id="cena" class="form-control" required placeholder="Unesite cenu automobila" value="<% if(locals.oglas){ %> <%= oglas.cena %> <% } %>" >
+        <div class="input-group-apend">
+            <span class="input-group-text" id="inputGroupFileAddon01">&#8364;</span>
+          </div>
+    </div>
+  </div>
+
+
+
+<div class="form-group">
+    <label for="Godište"> Godište </label>
+    <select name="godiste" id="godiste" class="custom-select" required>
+        <option value="">Izaberite godište</option>
+        <%
+        d=new Date().getFullYear(); 
+        for(i=2010;i<= d;i++){ %>
+            <option value='<%= i %>'
+                <% if(locals.oglas) {%>
+                <% if(i==oglas.godiste){ %>
+                    selected
+                <% } %>
+                <% } %>
+                ><%= i %></option>
+        <%}%>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="Karoserija"> Karoserija </label>
+    <select name="karoserija" id="karoserija" class="custom-select" required>
+        <option value="">Izaberite vrstu karoserije</option>
+        <option value="Limuzina" 
+        
+        <% if(locals.oglas){ %>
+        <% if('Limuzina'==oglas.karoserija){ %>
+            selected
+        <% } %>
+        <% } %>
+        >Limuzina</option>
+        <option value="Karavan" 
+        <% if(locals.oglas){ %>
+        <% if('Karavan'==oglas.karoserija){ %>
+            selected
+        <% } %>
+        <% } %>> Karavan</option>
+        <option value="Hečbek" 
+        <% if(locals.oglas){ %>
+        <% if('Hečbek'==oglas.karoserija){ %>
+            selected
+        <% } %>
+        <% } %>> Hečbek</option>
+        <option value="Kupe" 
+        <% if(locals.oglas){ %>
+        <% if('Kupe'==oglas.karoserija){ %>
+            selected
+        <% } %>
+        <% } %>> Kupe</option>
+        <option value="Kabriolet" 
+        <% if(locals.oglas){ %>
+        <% if('Kabriolet'==oglas.karoserija){ %>
+            selected
+        <% } %>
+        <% } %>> Kabriolet</option>
+        <option value="Pickup" 
+        <% if(locals.oglas){ %>
+        <% if('Pickup'==oglas.karoserija){ %>
+            selected
+        <% } %>
+        <% } %>> Pickup</option>
+        <option value="Džip" 
+        <% if(locals.oglas){ %>
+        <% if('Džip'==oglas.karoserija){ %>
+            selected
+        <% } %>
+        <% } %>>Džip</option>
+    </select>
+
+
+</div>
+
+<div class="form-group">
+    <label for="Gorivo"> Gorivo </label>
+    <select name="gorivo" id="gorivo" class="custom-select" required>
+        <option value="">Izaberite vrstu goriva</option>
+        <option value="Benzin"
+        <% if(locals.oglas){ %>
+        <% if('Benzin'==oglas.gorivo){ %>
+            selected
+        <% } %>
+        <% } %>>Benzin</option>
+        <option value="Dizel" 
+        <% if(locals.oglas){ %>
+        <% if('Dizel'==oglas.gorivo){ %>
+            selected
+        <% } %>
+        <% } %>> Dizel</option>
+        <option value="Benzin+Gas" 
+        <% if(locals.oglas){ %>
+        <% if('Benzin+Gas'==oglas.gorivo){ %>
+            selected
+        <% } %>
+        <% } %>> Benzin + Gas</option>
+        <option value="Metan" 
+        <% if(locals.oglas){ %>
+        <% if('Metan'==oglas.gorivo){ %>
+            selected
+        <% } %>
+        <% } %>> Metan CNG</option>
+        <option value="Elektricni" 
+        <% if(locals.oglas){ %>
+        <% if('Elektricni'==oglas.gorivo){ %>
+            selected
+        <% } %>
+        <% } %>> Električni pogon</option>
+        <option value="Hibridni" 
+        <% if(locals.oglas){ %>
+        <% if('Hibridni'==oglas.gorivo){ %>
+            selected
+        <% } %>
+        <% } %>> Hibridni pogon</option>
+    </select>
+
+
+</div>
+
+<div class="form-group">
+    <label for="Grad"> Grad </label>
+    <input type="text" name="grad" id="grad" class="form-control" required placeholder="Unesite grad" value="<%if(locals.oglas){ %> <%= oglas.grad %> <% } %>">
+</div>
+<% if(typeof novi!='undefined'){ %>
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroupFileAddon01">Slika</span>
+    </div>
+    <div class="custom-file">
+      <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="slika" multiple>
+      <label class="custom-file-label" for="inputGroupFile01">Izaberite sliku(MAX 5MB)</label>
+      
+    </div>
+    
+  </div>
+  <p class="text-muted"> Možete izabrati do 10 slika(CTRL + CLICK)</p>
+<% } %>
+
+
+
+<div class="form-group">
+    <label for="Opis"> Opis </label>
+    <textarea required name="opis" id="Opis" cols="30" rows="5" class="form-control" placeholder="Unesite opis svog oglasa"><%if(locals.oglas){ %> <%= oglas.opis %> <% } %></textarea>
+</div>
+
+<div class="justify-content-between text-center my-3">
+<a href="/" class="btn btn-secondary">Otkaži</a>
+<button type="submit" class="btn btn-primary"> Objavi </button>
+</div>

@@ -1,0 +1,58 @@
+  <h2 class="my-4 text-center">  <a href="/oglasi" class="btn btn-info">Svi oglasi</a> Oglas "<%= oglas.naslov%>"</h2>
+            <div class="card">
+                <div class="card-header text-center"><h4><span class="float-left"><%= oglas.naslov %></span> <span class="float-right"><%= oglas.datum.toLocaleDateString() %></span></h4></div>
+                <div class="card-body ">
+                    <div class="row py-4 m-auto">
+                        <% for(i=0;i < oglas.slika.length; i++){
+                            %>
+                        <div class="col-md-4 gallery-item"><a href="/<%= oglas.slika[i] %>" target="_blank"><img class="w-100" src="./../../<%= oglas.slika[i] %>">
+                            <p class="text-muted">Klik za veću sliku<i class="fas fa-arrow-up"></i></p></a>
+                        
+                        </div>
+                        <% 
+                    } %>
+                    </div>
+                    <!-- <div class="m-auto" style="width:400px; height:400px;"> <img class="img-fluid" src="./../../<%= oglas.slika %>" alt="Slika"></div> -->
+                    <ul class="list-group">
+                        <li class="list-group-item">Model: <span class="font-weight-bold"><%= oglas.model %></span></li>
+                        <li class="list-group-item">Godiste: <span class="font-weight-bold"><%= oglas.godiste %></span></li>
+                        <li class="list-group-item">Karoserija: <span class="font-weight-bold"><%= oglas.karoserija %></span></li>
+                        <li class="list-group-item">Gorivo: <span class="font-weight-bold"><%= oglas.gorivo %></span></li>
+                        <li class="list-group-item">Grad: <span class="font-weight-bold"><%= oglas.grad %></span></li>
+                        <li class="list-group-item">Cena: <span class="font-weight-bold"><%= oglas.cena%> &#8364;</span></li>
+
+                        <li class="list-group-item"><div class="accordion" id="accordionExample">
+                            <div class="card">
+                              <div class="card-header bg-secondary" id="headingOne">
+                                <h1 class="mb-0 font-weight-bold">
+                                  <button class="btn btn-link btn-block text-left " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Opis <span class="float-right"><i class="fas fa-arrow-down"></i></span>
+                                  </button>
+                                </h1>
+                              </div>
+                          
+                              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <%= oglas.opis %>
+                                </div>
+                              </div>
+                            </div>
+                            </div>
+                        </li>
+                      </ul>
+                    
+                    <div class="m-4 text-center">
+                    <%if(typeof user!='undefined'){ 
+                        if(user.slug == oglas.user_slug){%>
+                            <hr>
+                    <a class="btn btn-danger float-left" href="/oglasi/izmeni/<%=oglas.id%>">Izmeni</a>
+                    <form action="/oglasi/izbrisi/<%=oglas.id%>?_method=DELETE" method="POST" class="form-group">
+                        <button type="submit" class="btn btn-primary float-right">Obriši</button>
+                    </form>
+                    <% }
+                }%>
+            </div>
+                </div>
+            </div>
+            <br>
+  
